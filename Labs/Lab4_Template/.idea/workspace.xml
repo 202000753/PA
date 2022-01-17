@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fa4671-8c49-487f-9d0d-e5feec2371c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Lab4_Template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4_Template.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/out/production/ADTGraphTemplate/TADGraphMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/out/production/ADTGraphTemplate/TADGraphMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/src/TADGraphMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPs/ADTGraphTemplate/src/TADGraphMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

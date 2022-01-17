@@ -4,9 +4,9 @@ import pt.pa.model.Local;
 
 import java.util.*;
 
+
 public class TADGraphMain {
     public static void main(String[ ] args){
-
         Graph<Local, Bridge> graph = new GraphEdgeList<>();
 
         Vertex<Local> localA = graph.insertVertex(new Local("A"));
@@ -14,22 +14,20 @@ public class TADGraphMain {
         Vertex<Local> localC = graph.insertVertex(new Local("C"));
         Vertex<Local> localD = graph.insertVertex(new Local("D"));
 
+        graph.insertEdge(localA, localB, new Bridge("a", 2));
+        graph.insertEdge(localA, localB, new Bridge("b", 1));
+        graph.insertEdge(localA, localC, new Bridge("c", 3));
+        graph.insertEdge(localA, localC, new Bridge("d", 1));
+        graph.insertEdge(localA, localD, new Bridge("e", 15));
+        graph.insertEdge(localB, localD, new Bridge("f", 4));
+        graph.insertEdge(localC, localD, new Bridge("g", 5));
 
-        graph.insertEdge(localA, localB, new Bridge("a"));
-        graph.insertEdge(localA, localB, new Bridge("b"));
-        graph.insertEdge(localB, localC, new Bridge("c"));
-        graph.insertEdge(localB, localC, new Bridge("d"));
-        graph.insertEdge(localA, localD, new Bridge("e"));
-        graph.insertEdge(localB, localD, new Bridge("f"));
-        graph.insertEdge(localC, localD, new Bridge("g"));
-
-        System.out.println(graph.toString());
+        /*System.out.println(graph.toString());
 
         System.out.println("\nEdges Incident with local A");
         for (Edge<Bridge, Local> e:graph.incidentEdges(localA)) {
             System.out.println(e.element().getName());
         }
-
 
         System.out.println("\nAdjacent Vertices of B");
         Collection<Vertex<Local>> vertices = graph.vertices();
@@ -38,22 +36,21 @@ public class TADGraphMain {
                 System.out.println(v.element().getName());
         }
 
-
         System.out.println("\nNumber of Edges Incident with local C");
         System.out.println(graph.incidentEdges(localC).size());
 
-
         System.out.println("\nAre Adjacents A, B " + (graph.areAdjacent(localA, localB)?"y":"n"));
-
 
         System.out.println("\nDFS");
         System.out.println(dfs(localA, graph));
 
         System.out.println("\nBFS");
-        System.out.println(bfs(localA, graph));
+        System.out.println(bfs(localA, graph));*/
 
         System.out.println("\nDijsktra");
-        System.out.println(mini(localA, graph););
+        List<Vertex<Local>> localsPath = new ArrayList<>();
+        System.out.println(minimumCostPath(localA, localB, localsPath, graph));
+        System.out.println(localsPath);
     }
 
     public static Collection<Vertex<Local>> dfs(Vertex<Local> vertice_root, Graph<Local, Bridge> graph) {
@@ -106,55 +103,86 @@ public class TADGraphMain {
         return list;
     }
 
-    private void dijkstra(Vertex<Local> orig, Map<Vertex<Local>, Double> costs, Map<Vertex<Local>, Vertex<Local>> predecessors, GraphEdgeList<Local, Bridge> graph) {
-        Set<Vertex<Local>> unvisited = new HashSet<>();
+    private static void dijkstra(Vertex<Local> orig, Map<Vertex<Local>, Double> costs, Map<Vertex<Local>, Vertex<Local>> predecessors, Graph<Local, Bridge> graph) {
+        double cost = 0.0;
 
-        for (Vertex<Local> v:unvisited)
+        for (Vertex<Local> v:graph.vertices()) {
             costs.put(v, Double.MAX_VALUE);
-
-        costs.put(orig, 0.0);
-
-        for (Vertex<Local> v:unvisited)
             predecessors.put(v, null);
+        }
 
-        Vertex<Local> u=null;
+        costs.replace(orig, 0.0);
+
+        List<Vertex<Local>> unvisited = (List<Vertex<Local>>) graph.vertices();
 
         while (!unvisited.isEmpty()) {
-            u=findMinimumVertex(unvisited, costs);
+            Vertex<Local> vertex = findLowerVertex(costs, unvisited);
 
-            if (costs.get(u)==Double.MAX_VALUE)
+            if (costs.get(vertex) == Double.MAX_VALUE)
                 return;
 
-            unvisited.remove(u);
+            unvisited.remove(vertex);
 
-            for (Edge<Bridge, Local> e:graph.incidentEdges(u)){
-                Vertex w = graph.opposite(u, e);
-                double cost = e.element().getCost() + costs.get(u);
+            List<Vertex<Local>> adjacents = new ArrayList<>();
+
+            for (Vertex<Local> v:unvisited) {
+                if (graph.areAdjacent(vertex, v))
+                    adjacents.add(v);
+            }
+
+            for (Vertex<Local> vertexAdjacent:adjacents) {
+                cost = 0.0;
+                cost = costs.get(vertex) + cost_between(vertex, vertexAdjacent, graph);
+
+                if(cost < costs.get(vertexAdjacent)) {
+                    costs.replace(vertexAdjacent, cost);
+                    predecessors.replace(vertexAdjacent, vertex);
+                }
             }
         }
-
     }
 
-    private static Vertex<Local> findMinimumVertex(Set<Vertex<Local>> unvisited, Map<Vertex<Local>, Double> cost) {
-        Vertex<Local> vMin=null;
-        double minCost=Double.MAX_VALUE;
+    private static Double cost_between(Vertex<Local> vertex, Vertex<Local> vertexAdjacent, Graph<Local, Bridge> graph) {
+        Double cost = Double.MAX_VALUE;
+
+        for (Edge<Bridge, Local> edge:graph.incidentEdges(vertex)) {
+            if ((edge.vertices()[0] == vertexAdjacent || edge.vertices()[1] == vertexAdjacent) && cost > edge.element().getCost())
+                cost = Double.valueOf(edge.element().getCost());
+        }
+
+        return cost;
+    }
+
+    private static Vertex<Local> findLowerVertex(Map<Vertex<Local>, Double> costs, List<Vertex<Local>> unvisited) {
+        Vertex<Local> vertex = null;
+        Double cost = Double.MAX_VALUE;
 
         for (Vertex<Local> v:unvisited) {
-            double minV=cost.get(v);
-
-            if(minV<minCost) {
-                vMin = v;
-                minCost = minV;
+            if(costs.get(v) < cost) {
+                vertex = v;
+                cost = costs.get(v);
             }
         }
 
-        return vMin;
+        return vertex;
     }
 
-    public int minimumCostPath(Vertex<Local> orig, Vertex<Local> dst, List<Vertex<Local>> localsPath, GraphEdgeList<Local, Bridge> graph) {
-        
+    public static double minimumCostPath(Vertex<Local> orig, Vertex<Local> dst, List<Vertex<Local>> localsPath, Graph<Local, Bridge> graph) {
+        double cost = 0;
+        Map<Vertex<Local>, Double> costs = new HashMap<>();
+        Map<Vertex<Local>, Vertex<Local>> predecessors = new HashMap<>();
+        Vertex<Local> vertex = dst;
 
+        dijkstra(orig, costs, predecessors, graph);
 
-        return 0;
+        while (vertex != orig) {
+            localsPath.add(vertex);
+            vertex = predecessors.get(vertex);
+        }
+
+        localsPath.add(vertex);
+        cost = costs.get(dst);
+
+        return cost;
     }
 }

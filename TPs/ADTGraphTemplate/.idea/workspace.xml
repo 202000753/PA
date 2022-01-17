@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8fe88f9-529a-456c-949b-441143d23df7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Labs/lab1/lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Labs/lab1/lab1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADTGraphTemplate/TADGraphMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ADTGraphTemplate/TADGraphMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TADGraphMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TADGraphMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ADTMap_Template/ADTMap_Template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ADTMap_Template/ADTMap_Template.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ADTStack_Template/ADTStack_Template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ADTStack_Template/ADTStack_Template.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -34,6 +40,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="TADGraphMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -59,5 +70,17 @@
       <updated>1636715616586</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
