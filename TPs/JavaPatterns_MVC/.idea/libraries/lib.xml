@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JavaFXSmartGraph-0.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaFXSmartGraph-0.9.4.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

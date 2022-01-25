@@ -46,7 +46,20 @@ public class StackLinked<E> implements Stack<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new IteratorStack();
+    }
+
+    private class IteratorStack implements Iterator<E>{
+
+        @Override
+        public boolean hasNext() {
+            return size != 0;
+        }
+
+        @Override
+        public E next() {
+            return pop();
+        }
     }
 
     private class Node{
@@ -61,8 +74,5 @@ public class StackLinked<E> implements Stack<E> {
             this.elem = elem;
             this.next = next;
         }
-
-
     }
-
 }

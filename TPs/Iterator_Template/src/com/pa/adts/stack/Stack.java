@@ -4,8 +4,6 @@
  */
 package com.pa.adts.stack;
 
-
-
 /**
  *
  * @author PM-Uninova

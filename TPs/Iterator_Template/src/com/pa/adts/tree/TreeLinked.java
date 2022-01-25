@@ -19,7 +19,7 @@ public class TreeLinked<E> implements Tree<E> {
     public TreeLinked() {
      this.root=null;
     }
-   
+
     public TreeLinked(E root) {
         this.root = new TreeNode(root);
     }
@@ -62,7 +62,6 @@ public class TreeLinked<E> implements Tree<E> {
     @Override
     public Position<E> root() throws EmptyTreeException {
         return this.root;
-
     }
 
     @Override
@@ -232,10 +231,10 @@ public class TreeLinked<E> implements Tree<E> {
 
     /** auxiliary recursive method for positions() method**/
     private void positions(Position<E> position, ArrayList<Position<E>> lista) {
-
         for (Position<E> w : children(position)) {
             positions(w, lista);
         }
+
         lista.add(lista.size(), position); // visit (position)
     }
 
@@ -336,5 +335,4 @@ public class TreeLinked<E> implements Tree<E> {
             return element;
         }
     }
-
 }

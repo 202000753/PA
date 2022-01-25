@@ -36,8 +36,5 @@ public class TADTreeMain {
         // TODO foreach
         System.out.println("ToString");
         System.out.println(myTree);
-
-        
-
     }
 }

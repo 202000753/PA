@@ -1,5 +1,5 @@
+import com.pa.adts.stack.*;
 import com.pa.adts.stack.Stack;
-import com.pa.adts.stack.StackArray;
 
 import java.util.*;
 
@@ -23,7 +23,7 @@ public class MAinTestIterator {
         for (Integer i: set)
             System.out.print(i + " ");
 
-        Stack<Integer> stack = new StackArray();
+        Stack<Integer> stack = new StackArray<Integer>();
 
         for (int i = 0; i < 20; i++)
             stack.push( 100 - i);
